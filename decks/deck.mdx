@@ -1,0 +1,467 @@
+import { themes as builtInThemes, Head, Notes, Appear, Split } from "mdx-deck";
+import { prism } from "mdx-deck/themes";
+import { Box, Card, Image, Heading, Text, Flex } from "rebass";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { hopscotch } from "react-syntax-highlighter/dist/esm/styles/prism";
+import customTheme from "./theme.js";
+import NoRemove from "../static/images/no-remove.png";
+import Remove from "../static/images/remove.png";
+import PoorPerf from "../static/images/poor-perf-stats.png";
+
+export const themes = [builtInThemes.dark, customTheme, prism];
+
+<Head>
+  <title>Infinite challenges of building infinite scroller</title>
+  <meta name="twitter:site" content="@ganapativs" />
+  <meta name="twitter:title" content="Delightful infinite scroller" />
+  <meta
+    name="twitter:description"
+    content="Infinite challenges of building infinite scroller"
+  />
+</Head>
+
+<Text fontSize={30} pb={15}>
+    Infinite challenges of building
+</Text>
+<Heading fontSize={100} as="h1">Infinite scroller</Heading>
+
+<Appear>
+  <Flex px={3} py={4} mt={40} alignItems="center" flexDirecion="row">
+    <Box mr={30}>
+      <Image
+        mr={40}
+        src="https://meetguns.com/images/ganapativs.jpg"
+        width={100}
+        height={100}
+        style={{ borderRadius: "50%", border: "2px solid currentColor" }}
+      />
+    </Box>
+    <Box mx="auto" fontSize={30}>
+      <Text fontSize={40}>Ganapati V S</Text>
+      <a href="https://meetguns.com">meetguns.com</a> · <a href="https://twitter.com/ganapativs">@ganapativs</a>
+    </Box>
+  </Flex>
+</Appear>
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  What is Infinite scrolling?
+</Heading>
+
+<Text fontSize={30} pb={15}>
+  And, what is a infinite scroller?
+</Text>
+
+<Notes>
+
+- Demo - http://localhost:58387/iframe.html?id=demo--basic
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Issue
+</Heading>
+
+<Box mx="auto" mb={50}>
+  <img src={PoorPerf} width={800} />
+</Box>
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Issue
+</Heading>
+
+<Box mx="auto" mb={50}>
+  <img src={NoRemove} width={800} />
+</Box>
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Issues
+</Heading>
+
+<ul>
+  <Appear>
+    <li>Number of DOM nodes</li>
+    <li>CSS Layout calculations</li>
+    <li>Initial rendering/Update delay</li>
+    <li>Might affects other parts of the page</li>
+  </Appear>
+</ul>
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Solution
+</Heading>
+
+<Text fontSize={50} pb={15}>
+  Virtualize! 🎉
+</Text>
+<Text fontSize={30} pb={15}>
+  Support both fixed and dynamic height items
+</Text>
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+TODO - Terminology image here
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Solution #1
+</Heading>
+
+<ul>
+  <Appear>
+    <li>Scroll listener</li>
+    <li>ResizeObserver</li>
+    <li>Items buffer</li>
+  </Appear>
+</ul>
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Solution #1
+</Heading>
+
+<SyntaxHighlighter language="javascript" style={hopscotch}>
+  {`
+    <Virtualizer>
+        <ResizeObserver>
+            <Item data-item-idx="0">...</Item>
+        </ResizeObserver>
+        <ResizeObserver>
+            <Item data-item-idx="1">...</Item>
+        </ResizeObserver>
+        ...
+        <ResizeObserver>
+            <Item data-item-idx="n">...</Item>
+        </ResizeObserver>
+        <Sentinel />
+    </Virtualizer>
+`}
+</SyntaxHighlighter>
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Solution #1
+</Heading>
+
+<SyntaxHighlighter language="javascript" style={hopscotch}>
+  {`
+    <Virtualizer>
+        <div data-item-idx="0" style="height: 120px"/>
+        <div data-item-idx="1" style="height: 150px"/>
+        ...
+        // Viewport start
+        <ResizeObserver>
+            <Item data-item-idx="250">...</Item>
+        </ResizeObserver>
+        <ResizeObserver>
+            <Item data-item-idx="251">...</Item>
+        </ResizeObserver>
+        // Viewport end
+        ...
+        <div data-item-idx="n" style="height: 165px"/>
+        <Sentinel />
+    </Virtualizer>
+  `}
+</SyntaxHighlighter>
+
+<Notes>
+
+- Demo - http://localhost:65431/iframe.html?id=demo--4k-remove-single-batch
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Issues #1
+</Heading>
+
+<ul>
+  <Appear>
+    <li>Huge number of DOM nodes</li>
+    <li>Memory consumption</li>
+    <li>Frequent operations</li>
+    <Text fontSize={30} py={30}>
+      * Probably better perf with IntersectionObserver? 🤔
+    </Text>
+  </Appear>
+</ul>
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Solution #2
+</Heading>
+
+<ul>
+  <Appear>
+    <li>IntersectionObserver</li>
+    <li>ResizeObserver</li>
+    <li>Batching</li>
+    <li>Items buffer</li>
+  </Appear>
+</ul>
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Solution #2
+</Heading>
+
+<SyntaxHighlighter language="javascript" style={hopscotch}>
+  {`
+    <Virtualizer>
+        <IntersectionObserver>
+            <ResizeObserver>
+                <Item data-item-idx="0">...</Item>
+            </ResizeObserver>
+        </IntersectionObserver>
+        ...
+        <IntersectionObserver>
+            <ResizeObserver>
+                <Item data-item-idx="n">...</Item>
+            </ResizeObserver>
+        </IntersectionObserver>
+        <Sentinel />
+    </Virtualizer>
+`}
+</SyntaxHighlighter>
+
+<Notes>
+
+- Buffered items
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Solution #2
+</Heading>
+
+<SyntaxHighlighter language="javascript" style={hopscotch}>
+  {`
+    <Virtualizer>
+        <div style="height: 22020px"/>
+        // Viewport start
+        <ResizeObserver>
+            <Item data-item-idx="250">...</Item>
+        </ResizeObserver>
+        <ResizeObserver>
+            <Item data-item-idx="251">...</Item>
+        </ResizeObserver>
+        // Viewport end
+        <div style="height: 10065px"/>
+        <Sentinel />
+    </Virtualizer>
+  `}
+</SyntaxHighlighter>
+
+<Notes>
+
+- Demo - http://localhost:65431/iframe.html?id=demo--4k-remove-single-batch
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Issues
+</Heading>
+
+<ul>
+  <Appear>
+    <li>Realtime</li>
+    <li>Reliablity</li>
+    <li>Too many operations</li>
+    <Text fontSize={30} py={30}>
+      * There could be a better solution
+    </Text>
+  </Appear>
+</ul>
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Solution #3
+</Heading>
+
+<ul>
+  <Appear>
+    <li>Scroll listener</li>
+    <li>ResizeObserver</li>
+    <li>Batching</li>
+    <li>Items buffer</li>
+  </Appear>
+</ul>
+
+<Notes>
+
+- TODO
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Solution #3
+</Heading>
+
+<SyntaxHighlighter language="javascript" style={hopscotch}>
+  {`
+    <Virtualizer>
+        <ResizeObserver>
+            <Batcher data-batch-idx="0">
+                <Item data-item-idx="0">...</Item>
+                ...
+            </Batcher>
+        </ResizeObserver>
+        ...
+        <ResizeObserver>
+            <Batcher data-batch-idx="n/x">
+                <Item data-item-idx="n">...</Item>
+                ...
+            </Batcher>
+        </ResizeObserver>
+        <Sentinel />
+    </Virtualizer>
+`}
+</SyntaxHighlighter>
+
+<Notes>
+
+- Buffered items
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Solution #3
+</Heading>
+
+<SyntaxHighlighter language="javascript" style={hopscotch}>
+  {`
+    <Virtualizer>
+        <div style="height: 22020px"/>
+        // Viewport start
+        <ResizeObserver>
+            <Batcher data-batch-idx="21>
+                <Item data-item-idx="210">...</Item>
+                ...
+            </Batcher>
+        </ResizeObserver>
+        <ResizeObserver>
+            <Batcher data-batch-idx="22>
+                <Item data-item-idx="220">...</Item>
+                ...
+            </Batcher>
+        </ResizeObserver>
+        // Viewport end
+        <div style="height: 10065px"/>
+        <Sentinel />
+    </Virtualizer>
+  `}
+</SyntaxHighlighter>
+
+<Notes>
+
+- Demo - http://localhost:65431/iframe.html?id=demo--4k-remove-single-batch
+
+</Notes>
+
+---
+
+<Heading fontSize={70} pb={30} as="h1">
+  Problems
+</Heading>
+
+<ul>
+  <Appear>
+    <li>Need to update entire batch when an item changes</li>
+  </Appear>
+</ul>
+
+<Notes>
+
+- TODO
+
+</Notes>

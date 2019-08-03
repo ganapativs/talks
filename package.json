@@ -1,0 +1,26 @@
+{
+  "name": "delightful-infinite-scrolling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck decks/deck.mdx",
+    "build": "mdx-deck build decks/deck.mdx",
+    "pdf": "mdx-deck pdf decks/deck.mdx",
+    "image": "mdx-deck screenshot decks/deck.mdx",
+    "help": "mdx-deck"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mdx-deck/layouts": "^2.5.0",
+    "@mdx-deck/themes": "^3.0.8",
+    "code-surfer": "2.0.0-alpha.10",
+    "file-loader": "^4.1.0",
+    "mdx-deck": "^3.0.8",
+    "mdx-deck-code-surfer": "^0.5.5",
+    "raw-loader": "^3.1.0",
+    "rebass": "^3.2.0",
+    "styled-components": "^4.3.2"
+  }
+}
