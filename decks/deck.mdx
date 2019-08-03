@@ -93,7 +93,7 @@ export const themes = [builtInThemes.dark, customTheme];
 
 <ul>
   <Appear>
-    <li>Number of DOM nodes</li>
+    <li>Huge number of DOM nodes</li>
     <li>Initial rendering/Update time</li>
     <li>CSS Layout calculations</li>
     <li>Might affects other parts of the page</li>
@@ -122,12 +122,14 @@ export const themes = [builtInThemes.dark, customTheme];
   Solution
 </Heading>
 
-<Text fontSize={50} pb={15}>
-  Virtualize! 🎉
-</Text>
-<Text fontSize={30} pb={15}>
-  Support both fixed and dynamic height items
-</Text>
+<Appear>
+  <Text fontSize={50} pb={15}>
+    Virtualize! 🎉
+  </Text>
+  <Text fontSize={30} pb={15}>
+    Support both fixed and dynamic height items
+  </Text>
+</Appear>
 
 <Notes>-</Notes>
 
@@ -187,14 +189,16 @@ TODO - Terminology image here
 <Virtualizer>
   <div data-item-idx="0" style="height: 120px" />
   <div data-item-idx="1" style="height: 150px" />
-  ... // Viewport start
+  ...
+  {/* Viewport start */}
   <ResizeObserver>
     <Item data-item-idx="250">...</Item>
   </ResizeObserver>
   <ResizeObserver>
     <Item data-item-idx="251">...</Item>
   </ResizeObserver>
-  // Viewport end ...
+  {/* Viewport end */}
+  ...
   <div data-item-idx="n" style="height: 165px" />
   <Sentinel />
 </Virtualizer>
@@ -226,7 +230,7 @@ TODO - Terminology image here
   <Appear>
     <li>Huge number of DOM nodes</li>
     <li>Memory consumption</li>
-    <li>Frequent operations</li>
+    <li>Frequent computations</li>
     <Text fontSize={30} py={30}>
       * Probably better perf with IntersectionObserver? 🤔
     </Text>
@@ -290,7 +294,7 @@ TODO - Terminology image here
 ```jsx
 <Virtualizer>
   <div style="height: 22020px" />
-  // Viewport start
+  {/* Viewport start */}
   <IntersectionObserver>
     <ResizeObserver>
       <Item data-item-idx="250">...</Item>
@@ -301,7 +305,7 @@ TODO - Terminology image here
       <Item data-item-idx="251">...</Item>
     </ResizeObserver>
   </IntersectionObserver>
-  // Viewport end
+  {/* Viewport end */}
   <div style="height: 10065px" />
   <Sentinel />
 </Virtualizer>
@@ -331,9 +335,9 @@ TODO - Terminology image here
 
 <ul>
   <Appear>
-    <li>Realtime</li>
-    <li>Reliablity</li>
-    <li>Too many operations</li>
+    <li>Manual buffer handling</li>
+    <li>Responsiveness/Reliablity</li>
+    <li>Heavy computations</li>
     <Text fontSize={30} py={30}>
       * There could be a better solution
     </Text>
@@ -364,9 +368,9 @@ TODO - Terminology image here
   <Appear>
     <li>Scroll listener</li>
     <li>ResizeObserver</li>
-    <li>RequestAnimationFrame</li>
     <li>Batching</li>
     <li>Items buffer</li>
+    <li>RequestAnimationFrame</li>
   </Appear>
 </ul>
 
@@ -412,7 +416,7 @@ TODO - Terminology image here
 ```jsx
 <Virtualizer>
   <div style="height: 22020px" />
-  // Viewport start
+  {/* Viewport start */}
   <ResizeObserver>
     <Batcher data-batch-idx="21">
       <Item data-item-idx="210">...</Item>
@@ -425,7 +429,7 @@ TODO - Terminology image here
       ...
     </Batcher>
   </ResizeObserver>
-  // Viewport end
+  {/* Viewport end */}
   <div style="height: 10065px" />
   <Sentinel />
 </Virtualizer>
@@ -488,7 +492,7 @@ TODO - Terminology image here
 
 <ul>
   <Appear>
-    <li>Suspense - Time slicing</li>
+    <li>Suspense & concurrent mode</li>
     <li>Smaller library(Current: 7kb)</li>
   </Appear>
 </ul>
@@ -506,7 +510,7 @@ TODO - Terminology image here
 </Box>
 
 <Text fontSize={20} pb={15}>
-  First of the many tech talks 🤞
+  First of the many talks 🤞
 </Text>
 
 <Notes>-</Notes>
