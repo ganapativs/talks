@@ -1,14 +1,12 @@
 import { themes as builtInThemes, Head, Notes, Appear, Split } from "mdx-deck";
-import { prism } from "mdx-deck/themes";
-import { Box, Card, Image, Heading, Text, Flex } from "rebass";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { hopscotch } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Box, Card, Image, Heading, Text, Flex, Link } from "rebass";
 import customTheme from "./theme.js";
 import NoRemove from "../static/images/no-remove.png";
 import Remove from "../static/images/remove.png";
 import PoorPerf from "../static/images/poor-perf-stats.png";
+import Thanks from "../static/images/thanks.webp";
 
-export const themes = [builtInThemes.dark, customTheme, prism];
+export const themes = [builtInThemes.dark, customTheme];
 
 <Head>
   <title>Infinite challenges of building infinite scroller</title>
@@ -20,10 +18,10 @@ export const themes = [builtInThemes.dark, customTheme, prism];
   />
 </Head>
 
-<Text fontSize={30} pb={15}>
+<Text color="#2196F3" fontSize={30} pb={15}>
     Infinite challenges of building
 </Text>
-<Heading fontSize={100} as="h1">Infinite scroller</Heading>
+<Heading color="#2196F3" fontSize={100} as="h1">Infinite scroller</Heading>
 
 <Appear>
   <Flex px={3} py={4} mt={40} alignItems="center" flexDirecion="row">
@@ -37,21 +35,17 @@ export const themes = [builtInThemes.dark, customTheme, prism];
       />
     </Box>
     <Box mx="auto" fontSize={30}>
-      <Text fontSize={40}>Ganapati V S</Text>
+      <Text fontSize={40}>Ganapati V S ⚽️ 🏸 🎮</Text>
       <a href="https://meetguns.com">meetguns.com</a> · <a href="https://twitter.com/ganapativs">@ganapativs</a>
     </Box>
   </Flex>
 </Appear>
 
-<Notes>
-
-- TODO
-
-</Notes>
+<Notes>-</Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   What is Infinite scrolling?
 </Heading>
 
@@ -59,68 +53,72 @@ export const themes = [builtInThemes.dark, customTheme, prism];
   And, what is a infinite scroller?
 </Text>
 
+[Demo](https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--basic)
+
 <Notes>
 
-- Demo - http://localhost:58387/iframe.html?id=demo--basic
+- Demo - https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--basic
 
 </Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
-  Issue
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
+  What is this talk about?
 </Heading>
+
+<Notes>-</Notes>
+
+---
 
 <Box mx="auto" mb={50}>
   <img src={PoorPerf} width={800} />
 </Box>
 
-<Notes>
-
-- TODO
-
-</Notes>
+<Notes>-</Notes>
 
 ---
-
-<Heading fontSize={70} pb={30} as="h1">
-  Issue
-</Heading>
 
 <Box mx="auto" mb={50}>
   <img src={NoRemove} width={800} />
 </Box>
 
-<Notes>
-
-- TODO
-
-</Notes>
+<Notes>-</Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Issues
 </Heading>
 
 <ul>
   <Appear>
     <li>Number of DOM nodes</li>
+    <li>Initial rendering/Update time</li>
     <li>CSS Layout calculations</li>
-    <li>Initial rendering/Update delay</li>
     <li>Might affects other parts of the page</li>
   </Appear>
 </ul>
 
+<Notes>-</Notes>
+
+---
+
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
+  Issues
+</Heading>
+
+[Demo](https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-no-remove)
+
 <Notes>
 
-- TODO
+- Demo - https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-no-remove
 
 </Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Solution
 </Heading>
 
@@ -131,25 +129,17 @@ export const themes = [builtInThemes.dark, customTheme, prism];
   Support both fixed and dynamic height items
 </Text>
 
-<Notes>
-
-- TODO
-
-</Notes>
+<Notes>-</Notes>
 
 ---
 
 TODO - Terminology image here
 
-<Notes>
-
-- TODO
-
-</Notes>
+<Notes>-</Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Solution #1
 </Heading>
 
@@ -161,78 +151,74 @@ TODO - Terminology image here
   </Appear>
 </ul>
 
-<Notes>
-
-- TODO
-
-</Notes>
+<Notes>-</Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Solution #1
 </Heading>
 
-<SyntaxHighlighter language="javascript" style={hopscotch}>
-  {`
-    <Virtualizer>
-        <ResizeObserver>
-            <Item data-item-idx="0">...</Item>
-        </ResizeObserver>
-        <ResizeObserver>
-            <Item data-item-idx="1">...</Item>
-        </ResizeObserver>
-        ...
-        <ResizeObserver>
-            <Item data-item-idx="n">...</Item>
-        </ResizeObserver>
-        <Sentinel />
-    </Virtualizer>
-`}
-</SyntaxHighlighter>
+```jsx
+<Virtualizer>
+  <ResizeObserver>
+    <Item data-item-idx="0">...</Item>
+  </ResizeObserver>
+  <ResizeObserver>
+    <Item data-item-idx="1">...</Item>
+  </ResizeObserver>
+  ...
+  <ResizeObserver>
+    <Item data-item-idx="n">...</Item>
+  </ResizeObserver>
+  <Sentinel />
+</Virtualizer>
+```
 
-<Notes>
-
-- TODO
-
-</Notes>
+<Notes>-</Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Solution #1
 </Heading>
 
-<SyntaxHighlighter language="javascript" style={hopscotch}>
-  {`
-    <Virtualizer>
-        <div data-item-idx="0" style="height: 120px"/>
-        <div data-item-idx="1" style="height: 150px"/>
-        ...
-        // Viewport start
-        <ResizeObserver>
-            <Item data-item-idx="250">...</Item>
-        </ResizeObserver>
-        <ResizeObserver>
-            <Item data-item-idx="251">...</Item>
-        </ResizeObserver>
-        // Viewport end
-        ...
-        <div data-item-idx="n" style="height: 165px"/>
-        <Sentinel />
-    </Virtualizer>
-  `}
-</SyntaxHighlighter>
+```jsx
+<Virtualizer>
+  <div data-item-idx="0" style="height: 120px" />
+  <div data-item-idx="1" style="height: 150px" />
+  ... // Viewport start
+  <ResizeObserver>
+    <Item data-item-idx="250">...</Item>
+  </ResizeObserver>
+  <ResizeObserver>
+    <Item data-item-idx="251">...</Item>
+  </ResizeObserver>
+  // Viewport end ...
+  <div data-item-idx="n" style="height: 165px" />
+  <Sentinel />
+</Virtualizer>
+```
+
+<Notes>-</Notes>
+
+---
+
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
+  Solution #1
+</Heading>
+
+[Demo](https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-remove-single-batch)
 
 <Notes>
 
-- Demo - http://localhost:65431/iframe.html?id=demo--4k-remove-single-batch
+- Demo - https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-remove-single-batch
 
 </Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Issues #1
 </Heading>
 
@@ -247,15 +233,11 @@ TODO - Terminology image here
   </Appear>
 </ul>
 
-<Notes>
-
-- TODO
-
-</Notes>
+<Notes>-</Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Solution #2
 </Heading>
 
@@ -268,36 +250,30 @@ TODO - Terminology image here
   </Appear>
 </ul>
 
-<Notes>
-
-- TODO
-
-</Notes>
+<Notes>-</Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Solution #2
 </Heading>
 
-<SyntaxHighlighter language="javascript" style={hopscotch}>
-  {`
-    <Virtualizer>
-        <IntersectionObserver>
-            <ResizeObserver>
-                <Item data-item-idx="0">...</Item>
-            </ResizeObserver>
-        </IntersectionObserver>
-        ...
-        <IntersectionObserver>
-            <ResizeObserver>
-                <Item data-item-idx="n">...</Item>
-            </ResizeObserver>
-        </IntersectionObserver>
-        <Sentinel />
-    </Virtualizer>
-`}
-</SyntaxHighlighter>
+```jsx
+<Virtualizer>
+  <IntersectionObserver>
+    <ResizeObserver>
+      <Item data-item-idx="0">...</Item>
+    </ResizeObserver>
+  </IntersectionObserver>
+  ...
+  <IntersectionObserver>
+    <ResizeObserver>
+      <Item data-item-idx="n">...</Item>
+    </ResizeObserver>
+  </IntersectionObserver>
+  <Sentinel />
+</Virtualizer>
+```
 
 <Notes>
 
@@ -307,38 +283,50 @@ TODO - Terminology image here
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Solution #2
 </Heading>
 
-<SyntaxHighlighter language="javascript" style={hopscotch}>
-  {`
-    <Virtualizer>
-        <div style="height: 22020px"/>
-        // Viewport start
-        <ResizeObserver>
-            <Item data-item-idx="250">...</Item>
-        </ResizeObserver>
-        <ResizeObserver>
-            <Item data-item-idx="251">...</Item>
-        </ResizeObserver>
-        // Viewport end
-        <div style="height: 10065px"/>
-        <Sentinel />
-    </Virtualizer>
-  `}
-</SyntaxHighlighter>
+```jsx
+<Virtualizer>
+  <div style="height: 22020px" />
+  // Viewport start
+  <IntersectionObserver>
+    <ResizeObserver>
+      <Item data-item-idx="250">...</Item>
+    </ResizeObserver>
+  </IntersectionObserver>
+  <IntersectionObserver>
+    <ResizeObserver>
+      <Item data-item-idx="251">...</Item>
+    </ResizeObserver>
+  </IntersectionObserver>
+  // Viewport end
+  <div style="height: 10065px" />
+  <Sentinel />
+</Virtualizer>
+```
+
+<Notes>-</Notes>
+
+---
+
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
+  Solution #2
+</Heading>
+
+[Demo](https://deploy-preview-6--react-delightful-scroller.netlify.com/iframe.html?id=window-scroller--default-options)
 
 <Notes>
 
-- Demo - http://localhost:65431/iframe.html?id=demo--4k-remove-single-batch
+- Demo - https://deploy-preview-6--react-delightful-scroller.netlify.com/iframe.html?id=window-scroller--default-options
 
 </Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
-  Issues
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
+  Issues #2
 </Heading>
 
 <ul>
@@ -352,15 +340,23 @@ TODO - Terminology image here
   </Appear>
 </ul>
 
+<Notes>-</Notes>
+
+---
+
+<Text fontSize={60} py={30}>
+  What if we combine good stuffs from #1 and #2? 😉
+</Text>
+
 <Notes>
 
-- TODO
+- Demo - https://deploy-preview-6--react-delightful-scroller.netlify.com/iframe.html?id=window-scroller--default-options
 
 </Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Solution #3
 </Heading>
 
@@ -368,43 +364,38 @@ TODO - Terminology image here
   <Appear>
     <li>Scroll listener</li>
     <li>ResizeObserver</li>
+    <li>RequestAnimationFrame</li>
     <li>Batching</li>
     <li>Items buffer</li>
   </Appear>
 </ul>
 
-<Notes>
-
-- TODO
-
-</Notes>
+<Notes>-</Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Solution #3
 </Heading>
 
-<SyntaxHighlighter language="javascript" style={hopscotch}>
-  {`
-    <Virtualizer>
-        <ResizeObserver>
-            <Batcher data-batch-idx="0">
-                <Item data-item-idx="0">...</Item>
-                ...
-            </Batcher>
-        </ResizeObserver>
-        ...
-        <ResizeObserver>
-            <Batcher data-batch-idx="n/x">
-                <Item data-item-idx="n">...</Item>
-                ...
-            </Batcher>
-        </ResizeObserver>
-        <Sentinel />
-    </Virtualizer>
-`}
-</SyntaxHighlighter>
+```jsx
+<Virtualizer>
+  <ResizeObserver>
+    <Batcher data-batch-idx="0">
+      <Item data-item-idx="0">...</Item>
+      ...
+    </Batcher>
+  </ResizeObserver>
+  ...
+  <ResizeObserver>
+    <Batcher data-batch-idx="n/x">
+      <Item data-item-idx="n">...</Item>
+      ...
+    </Batcher>
+  </ResizeObserver>
+  <Sentinel />
+</Virtualizer>
+```
 
 <Notes>
 
@@ -414,54 +405,108 @@ TODO - Terminology image here
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
   Solution #3
 </Heading>
 
-<SyntaxHighlighter language="javascript" style={hopscotch}>
-  {`
-    <Virtualizer>
-        <div style="height: 22020px"/>
-        // Viewport start
-        <ResizeObserver>
-            <Batcher data-batch-idx="21>
-                <Item data-item-idx="210">...</Item>
-                ...
-            </Batcher>
-        </ResizeObserver>
-        <ResizeObserver>
-            <Batcher data-batch-idx="22>
-                <Item data-item-idx="220">...</Item>
-                ...
-            </Batcher>
-        </ResizeObserver>
-        // Viewport end
-        <div style="height: 10065px"/>
-        <Sentinel />
-    </Virtualizer>
-  `}
-</SyntaxHighlighter>
+```jsx
+<Virtualizer>
+  <div style="height: 22020px" />
+  // Viewport start
+  <ResizeObserver>
+    <Batcher data-batch-idx="21">
+      <Item data-item-idx="210">...</Item>
+      ...
+    </Batcher>
+  </ResizeObserver>
+  <ResizeObserver>
+    <Batcher data-batch-idx="22">
+      <Item data-item-idx="220">...</Item>
+      ...
+    </Batcher>
+  </ResizeObserver>
+  // Viewport end
+  <div style="height: 10065px" />
+  <Sentinel />
+</Virtualizer>
+```
+
+<Notes>-</Notes>
+
+---
+
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
+  Solution #3
+</Heading>
+
+[Demo - start](https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-no-remove) |
+[Demo - end](https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-remove)
 
 <Notes>
 
-- Demo - http://localhost:65431/iframe.html?id=demo--4k-remove-single-batch
+- Demo start - https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-no-remove
+- Demo end - https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-remove
 
 </Notes>
 
 ---
 
-<Heading fontSize={70} pb={30} as="h1">
-  Problems
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
+  Issues #3
 </Heading>
 
 <ul>
   <Appear>
     <li>Need to update entire batch when an item changes</li>
+    <li>Batch mount/update time</li>
   </Appear>
 </ul>
 
-<Notes>
+<Notes>-</Notes>
 
-- TODO
+---
 
-</Notes>
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
+  react-delightful-scroller 🔥
+</Heading>
+
+###### https://github.com/ganapativs/react-delightful-scroller
+
+```shell
+  npm install react-delightful-scroller
+
+  yarn add react-delightful-scroller
+```
+
+<Notes>-</Notes>
+
+---
+
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
+  Future improvements
+</Heading>
+
+<ul>
+  <Appear>
+    <li>Suspense - Time slicing</li>
+    <li>Smaller library(Current: 7kb)</li>
+  </Appear>
+</ul>
+
+<Notes>-</Notes>
+
+---
+
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
+  Keep scrolling 🙌
+</Heading>
+
+<Box mx="auto" mb={50}>
+  <img src={Thanks} width={500} />
+</Box>
+
+<Text fontSize={20} pb={15}>
+  First of the many tech talks 🤞
+</Text>
+
+<Notes>-</Notes>

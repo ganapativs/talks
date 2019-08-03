@@ -1,4 +1,5 @@
 import Provider from "./Provider";
+import CodeHighlight from "./CodeHighlight";
 
 export default {
   fonts: {
@@ -15,5 +16,8 @@ export default {
   },
   googleFont:
     "https://fonts.googleapis.com/css?family=Inconsolata|Share&display=swap",
-  Provider
+  Provider,
+  components: {
+    code: CodeHighlight
+  }
 };
