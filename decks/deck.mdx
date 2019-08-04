@@ -75,15 +75,13 @@ export const themes = [builtInThemes.dark, customTheme];
   <img src={PoorPerf} width={800} />
 </Box>
 
-<Notes>-</Notes>
-
----
+<Notes>
 
 <Box mx="auto" mb={50}>
   <img src={NoRemove} width={800} />
 </Box>
 
-<Notes>-</Notes>
+</Notes>
 
 ---
 
@@ -443,13 +441,11 @@ TODO - Terminology image here
   Solution #3
 </Heading>
 
-[Demo - start](https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-no-remove) |
-[Demo - end](https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-remove)
+[Demo](https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-remove)
 
 <Notes>
 
-- Demo start - https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-no-remove
-- Demo end - https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-remove
+- Demo - https://deploy-preview-7--react-delightful-scroller.netlify.com/iframe.html?id=demo--4k-remove
 
 </Notes>
 
@@ -465,6 +461,28 @@ TODO - Terminology image here
     <li>Batch mount/update time</li>
   </Appear>
 </ul>
+
+<Notes>-</Notes>
+
+---
+
+<Heading color="#2196F3" fontSize={70} pb={30} as="h1">
+  Memory comparision
+</Heading>
+
+<Text fontSize={20} py={30}>
+  Basic (Not virtualized)
+</Text>
+<Box mx="auto" mb={0}>
+  <img src={NoRemove} width={600} />
+</Box>
+
+<Text fontSize={20} py={30}>
+  Virtualized
+</Text>
+<Box mx="auto" mb={0}>
+  <img src={Remove} width={600} />
+</Box>
 
 <Notes>-</Notes>
 
@@ -493,11 +511,17 @@ TODO - Terminology image here
 <ul>
   <Appear>
     <li>Suspense & concurrent mode</li>
+    <li>Imporve max items limit</li>
     <li>Smaller library(Current: 7kb)</li>
+    <li>Get to 60fps</li>
   </Appear>
 </ul>
 
-<Notes>-</Notes>
+<Notes>
+
+- Add demo or perf shot if possible
+
+</Notes>
 
 ---
 
